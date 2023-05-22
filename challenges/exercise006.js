@@ -1,9 +1,3 @@
-/* 
-⚠️
-⚠️ See exercise006.md - this time you have to write your own tests! ⚠️
-⚠️
-*/
-
 /**
  * This function will receive an array of numbers and should return the sum
  * of any numbers which are a multiple of 3 or 5
@@ -12,6 +6,11 @@
  */
 export const sumMultiples = (arr) => {
 	if (arr === undefined) throw new Error('arr is required');
+	return arr.reduce(
+		(total, element) =>
+			element % 3 === 0 || element % 5 === 0 ? total + element : total,
+		0
+	);
 };
 
 /**
@@ -21,6 +20,11 @@ export const sumMultiples = (arr) => {
  */
 export const isValidDNA = (str) => {
 	if (str === undefined) throw new Error('str is required');
+
+	// 💡 the every method returns true if every element in an array meets the given criteria
+	return [...str].every(
+		(char) => char === 'C' || char === 'G' || char === 'T' || char === 'A'
+	);
 };
 
 /**
@@ -30,6 +34,18 @@ export const isValidDNA = (str) => {
  */
 export const getComplementaryDNA = (str) => {
 	if (str === undefined) throw new Error('str is required');
+	if (!isValidDNA(str)) throw new Error('str must be a valid DNA sequence');
+
+	const bases = str.split('');
+
+	const complimentaryBases = {
+		T: 'A',
+		A: 'T',
+		C: 'G',
+		G: 'C',
+	};
+	const complimentaryDNA = bases.map((base) => complimentaryBases[base]);
+	return complimentaryDNA.join('');
 };
 
 /**
@@ -39,6 +55,12 @@ export const getComplementaryDNA = (str) => {
  */
 export const isItPrime = (n) => {
 	if (n === undefined) throw new Error('n is required');
+
+	if (!Number.isInteger(n)) return false;
+
+	for (let i = 2, max = Math.sqrt(n); i <= max; i++)
+		if (n % i === 0) return false;
+	return n > 1;
 };
 
 /**
@@ -55,6 +77,15 @@ export const isItPrime = (n) => {
 export const createMatrix = (n, fill) => {
 	if (n === undefined) throw new Error('n is required');
 	if (fill === undefined) throw new Error('fill is required');
+
+	let result = [];
+	let i = n;
+	// we can use the .fill() method to create an array of size n and fill it:
+	while (i > 0) {
+		result.push(Array(n).fill(fill));
+		i--;
+	}
+	return result;
 };
 
 /**
@@ -72,4 +103,6 @@ export const createMatrix = (n, fill) => {
 export const areWeCovered = (staff, day) => {
 	if (staff === undefined) throw new Error('staff is required');
 	if (day === undefined) throw new Error('day is required');
+
+	return staff.filter((name) => name.rota.includes(day)).length >= 3;
 };
