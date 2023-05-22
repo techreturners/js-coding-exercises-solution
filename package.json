@@ -1,0 +1,29 @@
+
+{
+	"name": "js_practice_march2020",
+	"version": "1.0.0",
+	"description": "A repository of JavaScript challenges for you to work on throughout the course",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"eslint": "eslint ./"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/techreturners/js_practice_march2020.git"
+	},
+	"keywords": [],
+	"author": "Tech Returners",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/techreturners/js_practice_march2020/issues"
+	},
+	"homepage": "https://github.com/techreturners/js_practice_march2020#readme",
+	"devDependencies": {
+		"@babel/core": "^7.20.2",
+		"@babel/preset-env": "^7.20.2",
+		"babel-jest": "^29.3.1",
+		"jest": "^29.3.1"
+	  }
+}
+  
